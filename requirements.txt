@@ -1,8 +1,8 @@
 ### dependency
 tqdm
+black
 dvc
 pandas
-numpy
 PyYAML
 tensorflow==2.5.0
 
