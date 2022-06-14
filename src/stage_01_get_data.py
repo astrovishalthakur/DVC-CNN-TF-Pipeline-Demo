@@ -16,8 +16,14 @@ logging.basicConfig(
     )
 
 
-def get_data(config_path, params_path):
+def get_data(config_path):
     ## read config files
+    """takes path of config files and get data from source directory.
+    if  
+
+    Args:
+        config_path (str): takes path of config file
+    """
     config = read_yaml(config_path)
     source_data_dirs = config['source_data_dirs']
     local_data_dirs = config['local_data_dirs']
