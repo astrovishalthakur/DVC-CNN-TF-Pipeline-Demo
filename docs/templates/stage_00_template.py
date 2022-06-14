@@ -1,12 +1,13 @@
 import argparse
 import os
-from numpy import source
+import shutil
 from tqdm import tqdm
 import logging
-from src.utils.common import read_yaml, create_directories, copy_files
+from src.utils.common import read_yaml, create_directories
+import random
 
 
-STAGE = "Get_Data" ## <<< change stage name 
+STAGE = "STAGE_NAME" ## <<< change stage name 
 
 logging.basicConfig(
     filename=os.path.join("logs", 'running_logs.log'), 
@@ -16,20 +17,11 @@ logging.basicConfig(
     )
 
 
-def get_data(config_path, params_path):
+def main(config_path, params_path):
     ## read config files
     config = read_yaml(config_path)
-    source_data_dirs = config['source_data_dirs']
-    local_data_dirs = config['local_data_dirs']
-
-    for source_data_dir, local_data_dir in tqdm(
-        zip(source_data_dirs, local_data_dirs),
-        total=2,
-        desc="copying folders.", 
-        colour="red"
-        ):
-        create_directories([local_data_dir])
-        copy_files(source_data_dir, local_data_dir)
+    params = read_yaml(params_path)
+    pass
 
 
 if __name__ == '__main__':
@@ -41,7 +33,7 @@ if __name__ == '__main__':
     try:
         logging.info("\n********************")
         logging.info(f">>>>> stage {STAGE} started <<<<<")
-        get_data(config_path=parsed_args.config, params_path=parsed_args.params)
+        main(config_path=parsed_args.config, params_path=parsed_args.params)
         logging.info(f">>>>> stage {STAGE} completed!<<<<<\n")
     except Exception as e:
         logging.exception(e)

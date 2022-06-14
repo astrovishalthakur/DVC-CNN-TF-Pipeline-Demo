@@ -7,7 +7,12 @@ with open("README.md", "r", encoding="utf-8") as f:
 REPO_NAME = "DVC-CNN-TF-Pipeline-Demo"
 AUTHOR_USER_NAME = "astrovishalthakur"
 SRC_REPO = "src"
-LIST_OF_REQUIREMENTS = []
+LIST_OF_REQUIREMENTS = [
+    "dvc==2.10.2",
+    "tqdm==4.64.0",
+    "tensorflow==2.5.0",
+    "joblib==1.1.0"
+]
 
 
 setup(
@@ -17,7 +22,7 @@ setup(
     description="A small package for DVC",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url=f"https://github.com/{astrovishalthakur}/{DVC-CNN-TF-Pipeline-Demo}",
+    url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
     author_email="astrovishalthakur@gmail.com",
     packages=[SRC_REPO],
     license="MIT",

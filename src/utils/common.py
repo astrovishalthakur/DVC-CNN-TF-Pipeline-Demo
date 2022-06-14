@@ -4,6 +4,7 @@ import logging
 import time
 import pandas as pd
 import json
+import shutil
 
 def read_yaml(path_to_yaml: str) -> dict:
     with open(path_to_yaml) as yaml_file:
@@ -22,3 +23,14 @@ def save_json(path: str, data: dict) -> None:
         json.dump(data, f, indent=4)
 
     logging.info(f"json file saved at: {path}")
+
+
+def copy_files(source_data_dir:str, local_data_dir:str) -> None:
+    list_of_files = os.listdir(source_data_dir)
+
+    for file in list_of_files:
+        src = os.path.join(source_data_dir, file)
+        dest = os.path.join(local_data_dir, file)
+
+        shutil.copy(src, dest)
+    logging.info("copy of files successful")

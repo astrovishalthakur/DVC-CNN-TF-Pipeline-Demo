@@ -1,0 +1,48 @@
+[2022-06-14 13:39:33,168: INFO: stage_01_get_data]: 
+********************
+[2022-06-14 13:39:33,168: INFO: stage_01_get_data]: >>>>> stage Get_Data started <<<<<
+[2022-06-14 13:39:33,173: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-06-14 13:39:33,203: INFO: common]: created directory at: data/Cat
+[2022-06-14 13:39:34,083: ERROR: stage_01_get_data]: 'module' object is not callable
+Traceback (most recent call last):
+  File "src/stage_01_get_data.py", line 44, in <module>
+    get_data(config_path=parsed_args.config, params_path=parsed_args.params)
+  File "src/stage_01_get_data.py", line 32, in get_data
+    copy_files(source_data_dir, local_data_dir)
+  File "d:\development\ineuron\dvc\projects\project2\dvc-cnn-tf-pipeline-demo\src\utils\common.py", line 36, in copy_files
+    logging("copy of files successful")
+TypeError: 'module' object is not callable
+[2022-06-14 14:06:47,153: INFO: stage_01_get_data]: 
+********************
+[2022-06-14 14:06:47,153: INFO: stage_01_get_data]: >>>>> stage Get_Data started <<<<<
+[2022-06-14 14:06:47,155: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-06-14 14:06:47,176: INFO: common]: created directory at: data/Cat
+[2022-06-14 14:06:47,355: ERROR: stage_01_get_data]: 'module' object is not callable
+Traceback (most recent call last):
+  File "src/stage_01_get_data.py", line 44, in <module>
+    get_data(config_path=parsed_args.config, params_path=parsed_args.params)
+  File "src/stage_01_get_data.py", line 32, in get_data
+    copy_files(source_data_dir, local_data_dir)
+  File "d:\development\ineuron\dvc\projects\project2\dvc-cnn-tf-pipeline-demo\src\utils\common.py", line 36, in copy_files
+    logging("copy of files successful")
+TypeError: 'module' object is not callable
+[2022-06-14 14:07:29,208: INFO: stage_01_get_data]: 
+********************
+[2022-06-14 14:07:29,208: INFO: stage_01_get_data]: >>>>> stage Get_Data started <<<<<
+[2022-06-14 14:07:29,208: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-06-14 14:07:29,226: INFO: common]: created directory at: data/Cat
+[2022-06-14 14:07:29,342: INFO: common]: copy of files successful
+[2022-06-14 14:07:29,342: INFO: common]: created directory at: data/Dog
+[2022-06-14 14:07:29,933: INFO: common]: copy of files successful
+[2022-06-14 14:07:29,933: INFO: stage_01_get_data]: >>>>> stage Get_Data completed!<<<<<
+
+[2022-06-14 14:13:10,673: INFO: stage_01_get_data]: 
+********************
+[2022-06-14 14:13:10,673: INFO: stage_01_get_data]: >>>>> stage Get_Data started <<<<<
+[2022-06-14 14:13:10,675: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-06-14 14:13:10,703: INFO: common]: created directory at: data/Cat
+[2022-06-14 14:13:10,979: INFO: common]: copy of files successful
+[2022-06-14 14:13:10,979: INFO: common]: created directory at: data/Dog
+[2022-06-14 14:13:11,185: INFO: common]: copy of files successful
+[2022-06-14 14:13:11,185: INFO: stage_01_get_data]: >>>>> stage Get_Data completed!<<<<<
+
