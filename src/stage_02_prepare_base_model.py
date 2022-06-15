@@ -1,10 +1,10 @@
 import argparse
 import os
-import shutil
+from venv import create
 from tqdm import tqdm
 import logging
 from src.utils.common import read_yaml, create_directories
-import random
+from src.utils.model import get_VGGA16_model, prepare_full_model
 
 
 STAGE = "Prepare Base Model" ## <<< change stage name 
@@ -17,10 +17,30 @@ logging.basicConfig(
     )
 
 
-def prepare_base_model(config_path):
+def prepare_base_model(config_path: str, params_path: str)-> None:
     ## read config files
     config = read_yaml(config_path)
-    pass
+    params = read_yaml(params_path)
+
+    artifacts = config["artifacts"]
+    artifacts_dir = config["artifacts_dir"]
+
+    base_model_dir = artifacts["BASE_MODEL_DIR"]
+    base_model_name = artifacts["BASE_MODEL_NAME"]
+
+    base_model_dir_path = os.path.join(artifacts_dir, base_model_dir)
+    create_directories(base_model_dir_path)
+
+    base_model_path = os.path.join(base_model_dir_path, base_model_name)
+    base_model = get_VGGA16_model()
+    
+
+    full_model = prepare_full_model(base_model)
+
+    updated_base_model_path = os.path.join(base_model_dir_path, artifacts["UPDATED_BASE_MODEL_NAME"])
+
+    full_model.save(updated_base_model_path)
+    
 
 
 if __name__ == '__main__':
