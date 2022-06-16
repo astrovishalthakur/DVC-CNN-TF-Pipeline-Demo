@@ -9,3 +9,18 @@ stages:
     outs:
     - data/Cat
     - data/Dog
+
+
+  prepare_base_model:
+    cmd: python src/stage_02_prepare_base_model.py --config=configs/config.yaml --params=params.yaml
+    deps:
+    - src/stage_02_prepare_base_model.py
+    - src/utils/common.py
+    - configs/config.yaml
+    - src/utils/model.py
+    params:
+    - IMAGE_SIZE
+    - LEARNING_RATE
+    outs:
+    - artifacts/base_model/base_model.h5
+    - artifacts/base_model/updated_base_model.h5
