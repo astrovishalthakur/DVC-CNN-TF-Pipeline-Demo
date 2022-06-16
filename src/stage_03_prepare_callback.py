@@ -1,10 +1,7 @@
 import argparse
 import os
-import tensorboard
-from tqdm import tqdm
 import logging
 from src.utils.common import read_yaml, create_directories
-import time
 from src.utils.callbacks import create_and_save_tensorboard_callbacks, create_and_save_checkpointing_callbacks
 
 STAGE = "Prepare Callbacks" ## <<< change stage name 
@@ -33,13 +30,9 @@ def prepare_callbacks(config_path):
 
 
 
-    
-
-
 if __name__ == '__main__':
     args = argparse.ArgumentParser()
     args.add_argument("--config", "-c", default="configs/config.yaml")
-    args.add_argument("--params", "-p", default="params.yaml")
     parsed_args = args.parse_args()
 
     try:
