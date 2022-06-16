@@ -1,7 +1,16 @@
-from email.mime import base
-from flatten_dict import flatten
+from tensorboard import summary
 import tensorflow as tf
 import logging
+import io
+
+
+def _get_model_summary(model):
+        with io.StringIO() as stream:
+            model.summary(
+                print_fn = lambda x: stream.write(f"{x}\n")
+            )
+            summary_str = stream.getvalue()
+        return summary_str
 
 def get_VGGA16_model(input_shape:list, model_path:str) -> tf.keras.models.Model:
 
@@ -17,7 +26,7 @@ def get_VGGA16_model(input_shape:list, model_path:str) -> tf.keras.models.Model:
         weights='imagenet',
         include_top=False
         )
-    # logging.info(f"VGG16 base model summary:\n{_get_model_summary(model)}")
+    logging.info(f"VGG16 base model summary:\n{_get_model_summary(model)}")
     model.save(model_path)
     logging.info(f"VGG16 model saved at: {model_path}")
     return model
@@ -70,8 +79,6 @@ def prepare_full_model(
         metrics=["accuracy"]
     )
 
-    logging.info("custom model is compiled and ready to be trained.")
-
-    full_model.summary()
+    logging.info(f"full model summary {_get_model_summary(full_model)}")
 
     return full_model
