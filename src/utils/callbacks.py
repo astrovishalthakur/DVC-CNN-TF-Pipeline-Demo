@@ -3,15 +3,15 @@ import tensorboard
 import tensorflow as tf
 import os
 import joblib
-import time
 import logging
-
-def get_timestamp(name:str) -> str:
-    timestamp = time.asctime().replace(" ",'_').replace(":",".")
-    unique_name = f"{name}_at_{timestamp}"
-    return unique_name
+from utils.common import get_timestamp
 
 def create_and_save_tensorboard_callbacks(callbacks_dir:str, tb_log_dir:str) ->None:
+    """create and save tensorboard_callbacks as binary for later use
+    Args:
+        callbacks_dir (str): path to callback_dir
+        tensorboard_log_dir (str): path to tensorboard_log_dir
+    """
 
     unique_name = get_timestamp("tb_logs")
     tb_running_log_dir = os.path.join(tb_log_dir, unique_name)
@@ -23,6 +23,11 @@ def create_and_save_tensorboard_callbacks(callbacks_dir:str, tb_log_dir:str) ->N
     
 
 def create_and_save_checkpointing_callbacks(callbacks_dir: str, checkpoint_dir: str) -> None:
+    """create and save checkpointing callback
+    Args:
+        callbacks_dir (str): path to callback_dir
+        checkpoint_dir (str): path to checkpoint_dir
+    """
     checkpoint_file = os.path.join(checkpoint_dir, "ckpt_model.h5")
     checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_file, save_best_only=True)
 
