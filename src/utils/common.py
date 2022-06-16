@@ -1,8 +1,7 @@
 import os
 import yaml
 import logging
-import time
-import pandas as pd
+from tqdm import tqdm
 import json
 import shutil
 
@@ -43,9 +42,19 @@ def copy_files(source_data_dir:str, local_data_dir:str) -> None:
     """
     list_of_files = os.listdir(source_data_dir)
 
-    for file in list_of_files:
-        src = os.path.join(source_data_dir, file)
-        dest = os.path.join(local_data_dir, file)
+    N = len(list_of_files)
 
+    for filename in tqdm(
+        list_of_files,
+        total=N,
+        desc=f"copying file from {source_data_dir} to {local_data_dir}",
+        colour="green",
+        ):
+        src = os.path.join(source_data_dir, filename)
+        dest = os.path.join(local_data_dir, filename)
         shutil.copy(src, dest)
-    logging.info("copy of files successful")
+
+
+    logging.info(
+        f"all the files has been copied from {source_data_dir} to {local_data_dir}"
+    )
