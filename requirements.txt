@@ -5,6 +5,7 @@ dvc
 pandas
 PyYAML
 tensorflow==2.5.0
+joblib==1.1.0
 
 ### local packages -
 -e . # << uncomment this to install from setup.py
