@@ -5,7 +5,7 @@ from tqdm import tqdm
 import logging
 from src.utils.common import read_yaml, create_directories
 import time
-# from src.utils.callbacks import create_and_save_tensorboard_callbacks, create_and_save_checkpointing_callbacks
+from src.utils.callbacks import create_and_save_tensorboard_callbacks, create_and_save_checkpointing_callbacks
 
 STAGE = "Prepare Callbacks" ## <<< change stage name 
 
@@ -28,8 +28,8 @@ def prepare_callbacks(config_path):
 
     create_directories([tensorboard_log_dir, checkpoint_dir, callbacks_dir])
 
-    # create_and_save_tensorboard_callbacks(callbacks_dir, tensorboard_log_dir)
-    # create_and_save_checkpointing_callbacks(callbacks_dir)
+    create_and_save_tensorboard_callbacks(callbacks_dir, tensorboard_log_dir)
+    create_and_save_checkpointing_callbacks(callbacks_dir, checkpoint_dir)
 
 
 
