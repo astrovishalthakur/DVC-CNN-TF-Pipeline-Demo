@@ -3,4 +3,5 @@ IMAGE_SIZE: [224, 224, 3] # image size used in vgg16 model.
 BATCH_SIZE: 16 # defautl is 32
 EPOCHS: 2
 LEARNING_RATE: 0.001
+AUGMENTATION: True
 
