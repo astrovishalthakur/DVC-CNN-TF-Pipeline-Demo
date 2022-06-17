@@ -1,7 +1,8 @@
-from tensorboard import summary
 import tensorflow as tf
 import logging
 import io
+import os
+from utils.common import get_timestamp
 
 
 def _get_model_summary(model):
@@ -90,7 +91,7 @@ def load_full_model(untrained_full_model_path: str) -> tf.keras.models.Model:
     logging.info(f"untrained full model summary: \n{_get_model_summary(model)}")
     return model
 
-def get_unqique_path_to_save_model(trained_model_dir: str, 
+def get_unique_path_to_save_model(trained_model_dir: str, 
     model_name: str = "model") -> str:
     timestamp = get_timestamp(name=model_name)
     unique_model_name = f"{timestamp}_.h5"
