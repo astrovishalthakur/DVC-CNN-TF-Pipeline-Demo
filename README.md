@@ -2,7 +2,7 @@
 
 <img src="docs\imgs\DVC-CNN-pipeline@2x (1).png" alt="workflow" width="70%">
 
-DVL project for deep-learning usecase using tensor-flow
+# DVC project for deep-learning usecase using tensor-flow
 
 ## STEPS
 
